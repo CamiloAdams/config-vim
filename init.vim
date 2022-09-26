@@ -27,7 +27,8 @@ Plug 'tpope/vim-surround'
 Plug 'chun-yang/auto-pairs'
 
 " Tree
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
+ Plug 'lambdalisue/fern.vim'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'        " Dependencies
@@ -53,6 +54,9 @@ Plug 'andweeb/presence.nvim'
 " IDE
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
+
+" Floaterm
+Plug 'voldikss/vim-floaterm'
 
 " Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -95,9 +99,10 @@ let g:lightline = {
 let mapleader=" "
 
 nmap <Leader>s <Plug>(easymotion-s2)      "easy motion
-nmap <Leader>nt :NERDTreeFind<CR>         " File explorer
+" nmap <Leader>nt :NERDTreeFind<CR>         " File explorer
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
+" Todo: close single buffer :bd
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -124,3 +129,17 @@ let g:coc_global_extensions = [
   \ 'coc-pyright',
   \ ]
 
+" Floaterm config
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_next   = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_new    = '<F4>'
+let g:floaterm_keymap_kill   = '<F5>'
+
+" Floaterm
+let g:floaterm_gitcommit='floaterm'
+let g:floaterm_autoinsert=1
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+let g:floaterm_wintitle=0
+let g:floaterm_autoclose=1
