@@ -17,7 +17,8 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 " add the plugin you want to use here.
 
 " syntax
-Plug 'sheerun/vim-polyglot'
+"Plug 'pangloss/vim-javascript'
+"Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'norcalli/nvim-colorizer.lua'
 
@@ -44,6 +45,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+Plug 'lambdalisue/fern-renderer-devicons.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 
 " GitHub
 Plug 'tpope/vim-fugitive'
@@ -60,6 +64,9 @@ Plug 'voldikss/vim-floaterm'
 
 " Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Project manager
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
@@ -98,11 +105,17 @@ let g:lightline = {
 " key map
 let mapleader=" "
 
-nmap <Leader>s <Plug>(easymotion-s2)      "easy motion
+nmap <Leader>u <Plug>(easymotion-s2)
 " nmap <Leader>nt :NERDTreeFind<CR>         " File explorer
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
-" Todo: close single buffer :bd
+nmap <Leader>b :bd<CR>
+
+" Todo Fern keybind
+nmap <leader>nt :Fern . -drawer<cr>
+
+let g:fern#renderer = "devicons"
+" let g:fern#renderer = "nerdfont"
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -143,3 +156,19 @@ let g:floaterm_width=0.8
 let g:floaterm_height=0.8
 let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1
+
+" Startify
+
+let g:startify_session_autoload = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_enable_special = 0
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {},
+  }
+}
+
